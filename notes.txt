@@ -1,1 +1,2 @@
 - might need to go for a bigger dataset if overfitting occurs
+- random forest only gave approx. 28% accuracy
