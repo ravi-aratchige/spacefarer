@@ -1,4 +1,4 @@
-name: Super-Linter
+name: Super Linter
 
 on:
   pull_request:
@@ -6,21 +6,20 @@ on:
       - main
 
 jobs:
-  super-linter:
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run Super-Linter
+      - name: Set up Super-Linter
         uses: github/super-linter@v4
         env:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: ${{ github.base_ref }}
 
-      - name: Check Super-Linter status
+      - name: Get Super-Linter report
         run: |
-          status=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/check-runs?check_name=Super-Linter")
-          if [ $status -ne 200 ]; then exit 1; fi
+          cat /tmp/lint/*.log
