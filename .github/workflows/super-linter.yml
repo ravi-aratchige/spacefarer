@@ -1,0 +1,26 @@
+name: Super-Linter
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  super-linter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Super-Linter
+        uses: github/super-linter@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_warning: true # This option fails the workflow on linting warnings
+
+      - name: Check Super-Linter status
+        run: |
+          status=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/check-runs?check_name=Super-Linter")
+          if [ $status -ne 200 ]; then exit 1; fi
