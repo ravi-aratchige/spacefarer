@@ -16,8 +16,7 @@ export default function Home() {
             Discover the<br />Cosmic Secrets<br />of Your Soul
           </h1>
           <p className='p-5'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Sed ut quam dapibus, tempor est nec, consequat velit.
+            Psyche Explorer combines the worlds of astrology and computer science, using machine learning to help you discover the hidden depths of your personality.
           </p>
           <button className="bg-violet-600 hover:bg-violet-400 text-white font-bold py-2 px-4 rounded">
             Take the Test
