@@ -1,13 +1,7 @@
-// import Head from 'next/head'
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { Nanum_Myeongjo } from 'next/font/google'
-
-const nanum_myeongjo = Nanum_Myeongjo({
-  subsets: ['latin'],
-  weight: ['400', '700', '800']
-});
+import { nanum_myeongjo } from './fonts'
 
 export default function Home() {
   return (
@@ -18,7 +12,7 @@ export default function Home() {
       {/* Hero section */}
       <section className='flex flex-col align-center text-center'>
         <div>
-          <h1 className='text-6xl font-nanum-myeongjo'>
+          <h1 className={`${nanum_myeongjo.className} text-6xl p-10`}>
             Discover the<br />Cosmic Secrets<br />of Your Soul
           </h1>
           <p className='p-5'>
