@@ -1,0 +1,12 @@
+From form_v2.html:
+
+{% for question in questions %}
+    <h1>{{ question }}</h1>
+    <label>Agree</label>
+    <input type="radio" name="q{{ questions.index(question) + 1 }}" value="5" />
+    <input type="radio" name="q{{ questions.index(question) + 1 }}" value="4" />
+    <input type="radio" name="q{{ questions.index(question) + 1 }}" value="3" />
+    <input type="radio" name="q{{ questions.index(question) + 1 }}" value="2" />
+    <input type="radio" name="q{{ questions.index(question) + 1 }}" value="1" />
+    <label>Disagree</label>
+{% endfor %}
