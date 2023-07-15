@@ -3,12 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <title>Psyche Explorer</title>
 </head>
 <body>
-    <header>
-        <div class="font-serif text-8xl">Psyche Explorer</div>
-    </header>
+    <main class="flex flex-col justify-between min-h-screen bg-[#0f041E] text-white">
+        <!-- Header -->
+        <header class='flex justify-between p-5'>
+            <div>
+                <a href="#">Psyche Explorer</a>
+            </div>
+            <div>
+                <a href="/about" class='px-8'>About</a>
+                <a href="#">Github</a>
+            </div>
+        </header>
+
+        <!-- Hero section -->
+        <section class='flex flex-col align-center text-center'>
+            <div>
+            <h1 class='text-6xl p-10'>
+                Discover the<br />Cosmic Secrets<br />of Your Soul
+            </h1>
+            <p class='p-5'>
+                Psyche Explorer combines the worlds of astrology and computer science, using machine learning to help you discover the hidden depths of your personality.
+            </p>
+            <button class="bg-violet-600 hover:bg-violet-400 text-white font-bold py-2 px-4 rounded">
+                <Link href="/test">
+                Take the Test
+                </Link>
+            </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="relative bottom-0 flex justify-center p-5 text-xs">
+            <p>Copyrights 2023 Ravi Aratchige</p>
+        </footer>
+    </main>
 </body>
 </html>
