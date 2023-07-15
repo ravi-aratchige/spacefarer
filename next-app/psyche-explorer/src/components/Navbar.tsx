@@ -1,4 +1,3 @@
-import { Anek_Devanagari } from 'next/font/google'
 import Image from 'next/image'
 
 export default function Navbar() {
@@ -8,7 +7,7 @@ export default function Navbar() {
                 <a href="#">Psyche Explorer</a>
             </div>
             <div>
-                <a href="#" className='px-8'>About</a>
+                <a href="/about" className='px-8'>About</a>
                 <a href="#">Github</a>
             </div>
         </nav>

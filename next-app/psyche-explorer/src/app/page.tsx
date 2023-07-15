@@ -1,11 +1,18 @@
+// TODO
+// fix issue in Particle component
+
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { nanum_myeongjo } from './fonts'
+import Link from 'next/link'
+import Particle from '@/components/Particle'
 
 export default function Home() {
   return (
-    <main className="flex flex-col justify-between min-h-screen bg-[#0f041E] text-white">
+    <main className="flex flex-col justify-between min-h-screen bg-[#0f041E] text-white bg-[url('/bg.jpeg')]">
+      {/* <Particle /> */}
+
       {/* Header (Navigation bar) */}
       <Navbar />
       
@@ -19,7 +26,9 @@ export default function Home() {
             Psyche Explorer combines the worlds of astrology and computer science, using machine learning to help you discover the hidden depths of your personality.
           </p>
           <button className="bg-violet-600 hover:bg-violet-400 text-white font-bold py-2 px-4 rounded">
-            Take the Test
+            <Link href="/test">
+              Take the Test
+            </Link>
           </button>
         </div>
       </section>
