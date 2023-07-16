@@ -14,9 +14,9 @@ def home():
 
 @app.route('/form')
 def form():
-    return render_template('form_v2.html', questions=questions)
+    return render_template('form-v2.html', questions=questions)
 
-@app.route('/form-test', methods=['GET', 'POST'])
+@app.route('/form-v2', methods=['GET', 'POST'])
 def form_test():
     answers = []
     if request.method == 'POST':
@@ -34,7 +34,7 @@ def form_test():
         if current_question_index < len(questions) - 1:
             # Increment the question index to display the next question
             next_question_index = current_question_index + 1
-            return render_template('form_v2.html', question=questions[next_question_index], question_index=next_question_index)
+            return render_template('form-v2.html', question=questions[next_question_index], question_index=next_question_index)
         else:
             # Display a thank you message or redirect to a different page
             # return render_template('home.html')
@@ -42,7 +42,7 @@ def form_test():
             return redirect(url_for('home'))
     else:
         # Display the first question when initially accessing the page
-        return render_template('form_v2.html', question=questions[0], question_index=0)
+        return render_template('form-v2.html', question=questions[0], question_index=0)
 
 if __name__ == '__main__':
     app.run(debug=True)
