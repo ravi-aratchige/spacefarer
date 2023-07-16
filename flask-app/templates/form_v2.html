@@ -5,7 +5,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             const radioButtons = document.querySelectorAll("input[type=radio]");
             radioButtons.forEach(function(radioButton) {
-                radioButton.addEventListener("click", function() {
+                radioButton.addEventListener("change", function() {
                     this.closest("form").submit();
                 });
             });
@@ -16,14 +16,18 @@
 {% block form %}
     <form action="" method="POST">
         <section class="flex flex-col align-center text-center">
-            <div>
+            <div class="flex flex-col">
                 <h1>{{ question }}</h1>
-                <input type="radio" name="answer" value="1"> Option 1<br>
-                <input type="radio" name="answer" value="2"> Option 2<br>
-                <input type="radio" name="answer" value="3"> Option 3<br>
-                <input type="radio" name="answer" value="4"> Option 4<br>
-                <input type="radio" name="answer" value="5"> Option 5<br>
-                <input type="hidden" name="question_index" value="{{ question_index }}">
+                <div class="flex justify-center">
+                    <label for="5">Agree</label>
+                    <input type="radio" name="answer" value="5">
+                    <input type="radio" name="answer" value="4">
+                    <input type="radio" name="answer" value="3">
+                    <input type="radio" name="answer" value="2">
+                    <input type="radio" name="answer" value="1">
+                    <label for="1">Disagree</label>
+                    <input type="hidden" name="question_index" value="{{ question_index }}">
+                </div>
             </div>
         </section>
     </form>
