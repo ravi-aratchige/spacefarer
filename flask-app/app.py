@@ -16,6 +16,10 @@ def home():
 def form():
     return render_template('form-v2.html', questions=questions)
 
+@app.route('/form-v1')
+def form_v1():
+    return render_template('form-v1.html')
+
 @app.route('/form-v2', methods=['GET', 'POST'])
 def form_test():
     answers = []

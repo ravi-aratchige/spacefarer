@@ -1,18 +1,5 @@
 {% extends 'layout.html' %}
 
-{% block script %}
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const radioButtons = document.querySelectorAll("input[type=radio]");
-            radioButtons.forEach(function(radioButton) {
-                radioButton.addEventListener("change", function() {
-                    this.closest("form").submit();
-                });
-            });
-        });
-    </script>
-{% endblock script %}
-
 {% block form %}
     <section class="flex flex-col align-center text-center">
         <form action="">
