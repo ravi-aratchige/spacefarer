@@ -92,9 +92,9 @@ def handle_form():
     
     # This is the end of the if statement that handles POST requests.
     
-    # Instead of a POST request, if this function receives a GET request,
-    # the user is trying to access the web-form. Thus, the function must return
-    # an HTML page containing the web-form.
+    # Instead of a POST request, if this function receives a GET request, that means that
+    # the user is trying to access the web-form. Thus, the function must return an HTML page
+    # containing the web-form.
 
     # NOTE:
     # This doesn't need to be written inside the else condition
