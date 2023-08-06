@@ -33,8 +33,22 @@ def form_v1():
         # grouping the answers into a single list
         for item in [a1, a2, a3, a4]:
             openness.append(item)
+
+        # get final score for trait
+        openness_total = sum(openness)
+        openness_score = openness_total / 2
+
+        # EXPLANATION:
+        # There are 4 questions for each personality trait. Each question has
+        # 5 MCQ answers, scored from 1 to 5. Thus, the total obtained for a
+        # single trait is taken out of 20 (5 x 4). To scale this down to be
+        # taken out of 10 (as the machine learning model uses values between
+        # 1 and 10 for each trait), we divide the collective total obtained for
+        # each trait by 2.
         
         print(f'Responses for openness: {openness}')
+        print(f'Final openness score: {openness_score}')
+        print(f'Data type of openness score: {type(openness_score)}')
         return openness
     
     # page to be rendered when the above if-statement is passed, i.e. form page:
