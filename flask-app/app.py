@@ -17,12 +17,16 @@ def home():
 def form():
     return render_template('form-v2.html', questions=questions)
 
+# IMPORTANT:
 # the below function is the currently operational form-handling function:
 
 @app.route('/form-v1', methods=['GET', 'POST'])
 def form_v1():
 
     if request.method == 'POST':
+
+        # NOTE:
+        # A POST request means that the user has submitted a completed form.
 
         # initializing variables to store total value for each personality trait
 
@@ -87,7 +91,15 @@ def form_v1():
 
         return final_scores
     
-    # page to be rendered when the above if-statement is passed, i.e. form page:
+    # This is the end of the if statement that handles POST requests.
+    
+    # Instead of a POST request, if this function receives a GET request,
+    # the user is trying to access the web-form. Thus, the function must return
+    # an HTML page containing the web-form.
+
+    # NOTE:
+    # This doesn't need to be written inside the else condition
+
     return render_template('form-v1.html')
 
 @app.route('/form-v2', methods=['GET', 'POST'])
