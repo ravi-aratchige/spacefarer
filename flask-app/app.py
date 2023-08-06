@@ -7,6 +7,7 @@ questions = ['Do you enjoy exploring new ideas and concepts?',
              'Are you comfortable with change and adapting to new situations?',
              'Do you like trying out new experiences and learning from different perspectives?']
 
+
 @app.route('/')
 @app.route('/home')
 def home():
@@ -20,36 +21,60 @@ def form():
 
 @app.route('/form-v1', methods=['GET', 'POST'])
 def form_v1():
-    openness = []
 
     if request.method == 'POST':
 
-        # getting the first five answers provided in the web-form
-        a1 = int(request.form.get('q1'))
-        a2 = int(request.form.get('q2'))
-        a3 = int(request.form.get('q3'))
-        a4 = int(request.form.get('q4'))
+        openness_total = 0
+        conscientiousness_total = 0
+        extraversion_total = 0
+        agreeableness_total = 0
+        neuroticism_total = 0
 
-        # grouping the answers into a single list
-        for item in [a1, a2, a3, a4]:
-            openness.append(item)
+        form_questions = ['q1', 'q2', 'q3', 'q4',
+                          'q5', 'q6', 'q7', 'q8',
+                          'q9', 'q10', 'q11', 'q12',
+                          'q13', 'q14', 'q15', 'q16',
+                          'q17', 'q18', 'q19', 'q20']
 
-        # get final score for trait
-        openness_total = sum(openness)
-        openness_score = openness_total / 2
+        for question in form_questions[0:4]:
+            openness_total = openness_total + int(request.form.get(question))
 
-        # EXPLANATION:
-        # There are 4 questions for each personality trait. Each question has
-        # 5 MCQ answers, scored from 1 to 5. Thus, the total obtained for a
-        # single trait is taken out of 20 (5 x 4). To scale this down to be
-        # taken out of 10 (as the machine learning model uses values between
-        # 1 and 10 for each trait), we divide the collective total obtained for
-        # each trait by 2.
+        for question in form_questions[4:8]:
+            conscientiousness_total = conscientiousness_total + int(request.form.get(question))
+
+        for question in form_questions[8:12]:
+            extraversion_total = extraversion_total + int(request.form.get(question))
+
+        for question in form_questions[12:16]:
+            agreeableness_total = agreeableness_total + int(request.form.get(question))
+
+        for question in form_questions[16:]:
+            neuroticism_total = neuroticism_total + int(request.form.get(question))
+
+        print(f'openness_total is {openness_total}')
+        print(f'openness_total data type is {type(openness_total)}')
+
+        print(f'openness_total is {openness_total}')
+        print(f'conscientiousness_total is {conscientiousness_total}')
+        print(f'extraversion_total is {extraversion_total}')
+        print(f'agreeableness_total is {agreeableness_total}')
+        print(f'neuroticism_total is {neuroticism_total}')
+
+        scores = [openness_total,
+                  conscientiousness_total,
+                  extraversion_total,
+                  agreeableness_total,
+                  neuroticism_total]
         
-        print(f'Responses for openness: {openness}')
-        print(f'Final openness score: {openness_score}')
-        print(f'Data type of openness score: {type(openness_score)}')
-        return openness
+        final_scores = []
+
+        for score in scores:
+            score = int(round(score / 2))
+            final_scores.append(score)
+
+        print(f'The final scores are {final_scores}')
+
+        return final_scores
     
     # page to be rendered when the above if-statement is passed, i.e. form page:
     return render_template('form-v1.html')
