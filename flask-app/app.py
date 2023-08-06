@@ -1,27 +1,26 @@
+# imports
+
 from flask import Flask, render_template, url_for, request, redirect
+
+# instantiating a Flask app
 
 app = Flask('Psyche Explorer')
 
-questions = ['Do you enjoy exploring new ideas and concepts?',
-             'Are you open to thinking in different and unconventional ways?',
-             'Are you comfortable with change and adapting to new situations?',
-             'Do you like trying out new experiences and learning from different perspectives?']
 
+
+# Home route
 
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('home.html')
 
-@app.route('/form')
-def form():
-    return render_template('form-v2.html', questions=questions)
 
-# IMPORTANT:
-# the below function is the currently operational form-handling function:
 
-@app.route('/form-v1', methods=['GET', 'POST'])
-def form_v1():
+# Handling the web-form of the personality test
+
+@app.route('/form', methods=['GET', 'POST'])
+def handle_form():
 
     if request.method == 'POST':
 
@@ -100,35 +99,11 @@ def form_v1():
     # NOTE:
     # This doesn't need to be written inside the else condition
 
-    return render_template('form-v1.html')
+    return render_template('form.html')
 
-@app.route('/form-v2', methods=['GET', 'POST'])
-def form_test():
-    answers = []
-    if request.method == 'POST':
-    # Retrieve the selected answer from the form
-        answer = request.form.get('answer')
-        
-        print(answer)
-        
-        # Process the selected answer, store it, or perform any other necessary actions
-        answers.append(answer)
-        
-        # Determine the index of the current question
-        current_question_index = int(request.form.get('question_index', 0))
-        
-        if current_question_index < len(questions) - 1:
-            # Increment the question index to display the next question
-            next_question_index = current_question_index + 1
-            return render_template('form-v2.html', question=questions[next_question_index], question_index=next_question_index)
-        else:
-            # Display a thank you message or redirect to a different page
-            # return render_template('home.html')
-            print(answers)            
-            return redirect(url_for('home'))
-    else:
-        # Display the first question when initially accessing the page
-        return render_template('form-v2.html', question=questions[0], question_index=0)
+
+
+# start up Flask app
 
 if __name__ == '__main__':
     app.run(debug=True)
