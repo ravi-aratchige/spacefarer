@@ -1,3 +1,39 @@
+@app.route('/form')
+def form():
+    return render_template('form-v2.html', questions=questions)
+
+*******************************************************************
+
+@app.route('/form-test', methods=['GET', 'POST'])
+def form_test():
+    answers = []
+    if request.method == 'POST':
+    # Retrieve the selected answer from the form
+        answer = request.form.get('answer')
+        
+        print(answer)
+        
+        # Process the selected answer, store it, or perform any other necessary actions
+        answers.append(answer)
+        
+        # Determine the index of the current question
+        current_question_index = int(request.form.get('question_index', 0))
+        
+        if current_question_index < len(questions) - 1:
+            # Increment the question index to display the next question
+            next_question_index = current_question_index + 1
+            return render_template('form-test.html', question=questions[next_question_index], question_index=next_question_index)
+        else:
+            # Display a thank you message or redirect to a different page
+            # return render_template('home.html')
+            print(answers)            
+            return redirect(url_for('home'))
+    else:
+        # Display the first question when initially accessing the page
+        return render_template('form-test.html', question=questions[0], question_index=0)
+
+*******************************************************************
+
 From form_v2.html:
 
 {% for question in questions %}
@@ -10,6 +46,8 @@ From form_v2.html:
     <input type="radio" name="q{{ questions.index(question) + 1 }}" value="1" />
     <label>Disagree</label>
 {% endfor %}
+
+*******************************************************************
 
 def form_v1():
     openness = []
@@ -87,6 +125,8 @@ def form_v1():
     
     # page to be rendered when the above if-statement is passed, i.e. form page:
     return render_template('form-v1.html')
+
+*******************************************************************
 
 .gap-0 { gap: 0px; }
 .gap-x-0 { column-gap: 0px; }
