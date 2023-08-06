@@ -36,7 +36,7 @@
 <body>
     <main class="flex flex-col justify-between min-h-screen text-white">
         <!-- Header -->
-        <header class='flex justify-between p-5'>
+        <header class='fixed w-full top-0 left-0 flex justify-between p-5'>
             <div>
                 <a href="/">Psyche Explorer</a>
             </div>
@@ -46,11 +46,13 @@
             </div>
         </header>
 
-        <!-- Hero section (/home) -->
-        {% block hero %} {% endblock hero %}
+        <div class="mt-16">
+            <!-- Hero section (/home) -->
+            {% block hero %} {% endblock hero %}
 
-        <!-- Form (/form) -->
-        {% block form %} {% endblock form %}
+            <!-- Form (/form) -->
+            {% block form %} {% endblock form %}
+        </div>
 
         <!-- Footer -->
         <footer class="relative bottom-0 flex justify-center p-5 text-xs">

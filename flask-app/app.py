@@ -16,8 +16,28 @@ def home():
 def form():
     return render_template('form-v2.html', questions=questions)
 
-@app.route('/form-v1')
+# the below function is the currently operational form-handling function:
+
+@app.route('/form-v1', methods=['GET', 'POST'])
 def form_v1():
+    openness = []
+
+    if request.method == 'POST':
+
+        # getting the first five answers provided in the web-form
+        a1 = int(request.form.get('q1'))
+        a2 = int(request.form.get('q2'))
+        a3 = int(request.form.get('q3'))
+        a4 = int(request.form.get('q4'))
+
+        # grouping the answers into a single list
+        for item in [a1, a2, a3, a4]:
+            openness.append(item)
+        
+        print(f'Responses for openness: {openness}')
+        return openness
+    
+    # page to be rendered when the above if-statement is passed, i.e. form page:
     return render_template('form-v1.html')
 
 @app.route('/form-v2', methods=['GET', 'POST'])
