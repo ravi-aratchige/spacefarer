@@ -27,6 +27,24 @@ def handle_form():
         # NOTE:
         # A POST request means that the user has submitted a completed form.
 
+        # obtaining gender and age
+
+        gender = 0
+
+        if request.form.get('gender') == 'male':
+            gender = 1
+
+        # NOTE:
+        # gender has a default of 0 (female) since the ML model denotes the gender
+        # of female samples as 0
+
+        age = int(request.form.get('age'))
+
+        print(gender)
+        print(type(gender))
+        print(age)
+        print(type(age))
+
         # initializing variables to store total value for each personality trait
 
         openness_total = 0
