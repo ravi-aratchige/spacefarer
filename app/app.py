@@ -12,8 +12,6 @@ app = Flask('Psyche Explorer')
 # Unpickling the trained model
 model = joblib.load('../model/model.pkl')
 
-print('Initialization complete')
-
 # Home route
 @app.route('/')
 @app.route('/home')
