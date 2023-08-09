@@ -7,8 +7,8 @@
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.png') }}">
     <title>Psyche Explorer</title>
 
-    <!-- Background gradient -->
     <style>
+        /* Background gradient */
         body {
             background: linear-gradient(-45deg, #8900AE, #5D0076, #330040, #000000);
             background-size: 400% 400%;
@@ -16,7 +16,7 @@
             height: auto;
         }
 
-        /* BACKGROUND ANIMATION */
+        /* Background animation */
         @keyframes gradient {
             0% {
                 background-position: 0% 50%;
@@ -27,6 +27,21 @@
             100% {
                 background-position: 0% 50%;
             }
+        }
+
+        /* Removing arrows from number input (age) in webform */
+
+        /* 1. Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* 2. Firefox */
+        input[type=number] {
+            appearance: textfield;
+            -moz-appearance: textfield;
         }
     </style>
 
