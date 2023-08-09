@@ -1,5 +1,7 @@
+"""Driver code for the Psyche Explorer Flask app"""
+
 # Imports
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, request
 import numpy as np
 import pandas as pd
 import joblib
@@ -10,12 +12,17 @@ app = Flask('Psyche Explorer')
 # Unpickling the trained model
 model = joblib.load('./model.pkl')
 
-
+print('Initialization complete')
 
 # Home route
 @app.route('/')
 @app.route('/home')
 def home():
+    """Route handler for homepage
+
+    Returns:
+        str: An HTML template of the homepage
+    """
     return render_template('home.html')
 
 
@@ -23,6 +30,11 @@ def home():
 # Handling the web-form of the personality test
 @app.route('/personality-test', methods=['GET', 'POST'])
 def handle_form():
+    """Route handler for personality test
+
+    Returns:
+        str: An HTML template of the form for the personality test
+    """
 
     if request.method == 'POST':
 
@@ -53,7 +65,7 @@ def handle_form():
         neuroticism_total = 0
         conscientiousness_total = 0
         agreeableness_total = 0
-        extraversion_total = 0        
+        extraversion_total = 0
 
         # List of questions in web-form (for iteration):
 
@@ -62,7 +74,7 @@ def handle_form():
                           'q9', 'q10', 'q11', 'q12',
                           'q13', 'q14', 'q15', 'q16',
                           'q17', 'q18', 'q19', 'q20']
-        
+
         # Iterating through web-form responses to get values for each personality trait:
 
         for question in form_questions[0:4]:
@@ -95,10 +107,10 @@ def handle_form():
                   conscientiousness_total,
                   agreeableness_total,
                   extraversion_total]
-        
+
         # Calculating the final scores for the personality traits, along with
         # the age and gender (to be input to the model for prediction):
-        
+
         input_values = [gender, age]
 
         for score in scores:
@@ -112,9 +124,9 @@ def handle_form():
         predict(input_values)
 
         return input_values
-    
+
     # This is the end of the if statement that handles POST requests.
-    
+
     # Instead of a POST request, if this function receives a GET request, that means that
     # the user is trying to access the web-form. Thus, the function must return an HTML page
     # containing the web-form.
@@ -125,8 +137,13 @@ def handle_form():
     return render_template('form.html')
 
 
-def predict(input):
-    input_vector = [np.array(input)]
+def predict(input_data):
+    """Funtion to pass input data to model and get predictions
+
+    Args:
+        input_data (list): A list of integers which will make up the input vector for the model
+    """
+    input_vector = [np.array(input_data)]
     print(input_vector)
 
     # The input vector by itself is only a list of integer values. Column names must be added
@@ -135,16 +152,22 @@ def predict(input):
 
     # Adding column names to input vector:
 
-    input_vector_with_columns = pd.DataFrame(input_vector, columns=['gender',
-                                                                    'age',
-                                                                    'openness',
-                                                                    'neuroticism',
-                                                                    'conscientiousness',
-                                                                    'agreeableness',
-                                                                    'extraversion'])
+    features = ['gender',
+                'age',
+                'openness',
+                'neuroticism',
+                'conscientiousness',
+                'agreeableness',
+                'extraversion']
+
+    input_vector_with_columns = pd.DataFrame(input_vector, columns=features)
+
+    # Get prediction from model:
 
     prediction = model.predict(input_vector_with_columns)
     print(f'Personality type: {prediction}')
+    print(f'Data type of prediction: {type(prediction)}')   # Output is <class 'numpy.ndarray'>
+
 
 
 # Start up Flask app
