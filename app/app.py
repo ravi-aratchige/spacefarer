@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import joblib
 
-# Instantiating a Flask app
+# Instantiating the Flask app
 app = Flask('Psyche Explorer')
 
 # Unpickling the trained model
