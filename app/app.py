@@ -170,6 +170,13 @@ def predict(input_data):
 
 
 
+# Display personality type after prediction
+@app.route('/result')
+def display_result():
+    return render_template('result.html')
+
+
+
 # Start up Flask app
 if __name__ == '__main__':
     app.run(debug=True)
