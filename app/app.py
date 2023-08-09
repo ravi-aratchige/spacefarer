@@ -10,7 +10,7 @@ import joblib
 app = Flask('Psyche Explorer')
 
 # Unpickling the trained model
-model = joblib.load('./model.pkl')
+model = joblib.load('../model/model.pkl')
 
 print('Initialization complete')
 
