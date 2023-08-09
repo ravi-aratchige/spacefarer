@@ -1,13 +1,15 @@
 # Imports
 from flask import Flask, render_template, url_for, request, redirect
 import numpy as np
+import pandas as pd
 import joblib
 
 # Instantiating a Flask app
 app = Flask('Psyche Explorer')
 
-# Unpickling the model
+# Unpickling the trained model
 model = joblib.load('./model.pkl')
+
 
 
 # Home route
@@ -48,10 +50,10 @@ def handle_form():
         # Initializing variables to store total value for each personality trait:
 
         openness_total = 0
-        conscientiousness_total = 0
-        extraversion_total = 0
-        agreeableness_total = 0
         neuroticism_total = 0
+        conscientiousness_total = 0
+        agreeableness_total = 0
+        extraversion_total = 0        
 
         # List of questions in web-form (for iteration):
 
@@ -67,32 +69,32 @@ def handle_form():
             openness_total = openness_total + int(request.form.get(question))
 
         for question in form_questions[4:8]:
-            conscientiousness_total = conscientiousness_total + int(request.form.get(question))
+            neuroticism_total = neuroticism_total + int(request.form.get(question))
 
         for question in form_questions[8:12]:
-            extraversion_total = extraversion_total + int(request.form.get(question))
+            conscientiousness_total = conscientiousness_total + int(request.form.get(question))
 
         for question in form_questions[12:16]:
             agreeableness_total = agreeableness_total + int(request.form.get(question))
 
         for question in form_questions[16:]:
-            neuroticism_total = neuroticism_total + int(request.form.get(question))
+            extraversion_total = extraversion_total + int(request.form.get(question))
 
         # Print statements to test total scores for each personality trait:
 
         print(f'openness_total is {openness_total}')
-        print(f'conscientiousness_total is {conscientiousness_total}')
-        print(f'extraversion_total is {extraversion_total}')
-        print(f'agreeableness_total is {agreeableness_total}')
         print(f'neuroticism_total is {neuroticism_total}')
+        print(f'conscientiousness_total is {conscientiousness_total}')
+        print(f'agreeableness_total is {agreeableness_total}')
+        print(f'extraversion_total is {extraversion_total}')
 
         # Packing total scores into a single list:
 
         scores = [openness_total,
+                  neuroticism_total,
                   conscientiousness_total,
-                  extraversion_total,
                   agreeableness_total,
-                  neuroticism_total]
+                  extraversion_total]
         
         # Calculating the final scores for the personality traits, along with
         # the age and gender (to be input to the model for prediction):
@@ -127,7 +129,21 @@ def predict(input):
     input_vector = [np.array(input)]
     print(input_vector)
 
-    prediction = model.predict(input_vector)
+    # The input vector by itself is only a list of integer values. Column names must be added
+    # to it, as the model has trained on a DataFrame with column names. Making predictions using
+    # the input vector as it is throws a UserWarning.
+
+    # Adding column names to input vector:
+
+    input_vector_with_columns = pd.DataFrame(input_vector, columns=['gender',
+                                                                    'age',
+                                                                    'openness',
+                                                                    'neuroticism',
+                                                                    'conscientiousness',
+                                                                    'agreeableness',
+                                                                    'extraversion'])
+
+    prediction = model.predict(input_vector_with_columns)
     print(f'Personality type: {prediction}')
 
 
