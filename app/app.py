@@ -1,7 +1,7 @@
 """Driver code for the Psyche Explorer Flask app"""
 
 # Imports
-from flask import Flask, render_template, request
+from flask import Flask, render_template, redirect, url_for, request
 import numpy as np
 import pandas as pd
 import joblib
@@ -119,9 +119,12 @@ def handle_form():
 
         print(f'The final scores are {input_values}')
 
-        predict(input_values)
+        personality_type = predict_personality(input_values)
 
-        return input_values
+        print(f'Personality type: {personality_type}')
+        print(f'Data type of personality type: {type(personality_type)}')   # <class 'int'>
+
+        return redirect(url_for('display_result', personality=personality_type))
 
     # This is the end of the if statement that handles POST requests.
 
@@ -135,11 +138,14 @@ def handle_form():
     return render_template('form.html')
 
 
-def predict(input_data):
+def predict_personality(input_data):
     """Funtion to pass input data to model and get predictions
 
     Args:
         input_data (list): A list of integers which will make up the input vector for the model
+
+    Returns:
+        list: An HTML template of the form for the personality test
     """
     input_vector = [np.array(input_data)]
     print(input_vector)
@@ -163,15 +169,34 @@ def predict(input_data):
     # Get prediction from model:
 
     prediction = model.predict(input_vector_with_columns)
-    print(f'Personality type: {prediction}')
+    print(f'Predicted personality type: {prediction}')
     print(f'Data type of prediction: {type(prediction)}')   # Output is <class 'numpy.ndarray'>
+
+    # Convert prediction from Numpy array to integer value before returning:
+
+    return prediction.item()
 
 
 
 # Display personality type after prediction
 @app.route('/result')
 def display_result():
-    return render_template('result.html')
+    """Route handler to display the results of the personality test
+
+    Returns:
+        str: An HTML template of the results page
+    """
+    personality = int(request.args.get('personality'))
+    print(f'Personality type to be displayed: {personality}')
+    print(f'Data type of personality type to be displayed: {type(personality)}')
+
+    personality_types = ['Dependable', 'Extraverted', 'Lively', 'Responsible', 'Serious']
+
+    # NOTE
+    # The above array's items have been specifically placed in the given order so that
+    # their indices match the predictions that the model makes.
+
+    return render_template('result.html', personality=personality_types[personality])
 
 
 
