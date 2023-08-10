@@ -2,7 +2,7 @@
 
 <img src="./assets/banner.png">
 
-Ever wondered what role you would play if you were a cosmic voyager, adventuring through space with your resourceful crew member?
+Ever wondered what role you would play if you were a cosmic voyager, adventuring through space with your resourceful crew members?
 
 Spacefarer uses machine learning to determine what type of astronaut you would be, based on your responses to a series of questions about your personality.
 
@@ -40,7 +40,7 @@ To run Spacefarer locally on your machine, follow these steps:
 
 ### 1. Clone Project
 
-Clone Spacefarer to a desired location / folder on your machine:
+Clone Spacefarer to a desired location (folder) on your machine:
 
 ```shell
 git clone https://github.com/ravi-aratchige/spacefarer.git
@@ -85,7 +85,7 @@ deactivate
 
 ### 3. Install Dependencies
 
-After activating the virtual environment, you can install all of the necessary dependencies with one command:
+After activating the virtual environment, you can install all of the necessary dependencies with a single command:
 
 ```shell
 pip install -r requirements.txt
@@ -101,7 +101,17 @@ Move from the root of the project into the `app` directory (where the Flask app 
 cd app
 ```
 
-Next, start up the Flask server:
+Then, install the necessary NPM packages. This is essential for TailwindCSS:
+
+```shell
+npm install
+
+# or
+
+npm i
+```
+
+Finally, start up the Flask server:
 
 ```shell
 python app.py
