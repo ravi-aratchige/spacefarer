@@ -7,7 +7,7 @@ import pandas as pd
 import joblib
 
 # Instantiating the Flask app
-app = Flask('Psyche Explorer')
+app = Flask('Spacefarer')
 
 # Unpickling the trained model
 model = joblib.load('../model/model.pkl')
