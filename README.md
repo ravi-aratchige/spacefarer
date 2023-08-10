@@ -1,4 +1,4 @@
-# Spacefarer
+# Spacefarer :rocket:
 
 <img src="./assets/banner.png">
 
