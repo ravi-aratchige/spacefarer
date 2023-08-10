@@ -16,7 +16,7 @@ You can be one of the following types of astronauts:
 4. **Commander** - leading the spacecraft, its crew and their operation.
 5. **Scientist** - conducting research and unraveling the mysteries of the cosmos.
 
-Spacefarer asks you a series of 20 space-themed questions; 4 questions each for the 5 personality traits of the **Big Five Personality Test**:
+Spacefarer asks you a series of 20 space-themed questions; 4 questions each for the 5 personality traits of the <a href="https://mettl.com/glossary/b/big-five-personality-test/#:~:text=The%20Big%20Five%20personality%20test%2C%20also%20known%20as%20the%20OCEAN,making%20the%20acronym%20%E2%80%93%20OCEAN).">**Big Five Personality Test**</a>:
 
 1. Openness
 2. Neuroticism
@@ -28,13 +28,13 @@ The answers provided to these questions are passed to a trained and deserialized
 
 <img src="./assets/result.png">
 
-Spacefarer is built as a Flask web app powered by a `LogisticRegression` model trained on a small (approx. 700 samples) dataset from <a href="https://www.kaggle.com/datasets/pavlorymarchuk/test3434?select=test.csv">Kaggle</a>. The model has an accuracy of **81.53%**.
+Spacefarer is built as a <a href="https://flask.palletsprojects.com">Flask</a> web app, styled with <a href="https://tailwindcss.com/">TailwindCSS</a> and powered by a <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">`LogisticRegression`</a> model trained on a small (approx. 700 samples) dataset from <a href="https://www.kaggle.com/datasets/pavlorymarchuk/test3434">Kaggle</a>. The model has an accuracy of **81.53%**.
 
 ## Setup
 
 ### Prerequisites
 
-Apart from the <a href="https://git-scm.com/">Git</a> version control system, you must have Python installed on your system (preferably added to the `PATH`). It is recommended to have a version greater than 3.9.0 installed.
+Apart from the <a href="https://git-scm.com/">Git</a> version control system, you must have <a href="https://www.python.org/">Python</a> installed on your system (preferably added to the `PATH`). It is recommended to have a version greater than 3.9.0 installed.
 
 To run Spacefarer locally on your machine, follow these steps:
 
