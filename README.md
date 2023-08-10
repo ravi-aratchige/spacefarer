@@ -1,2 +1,96 @@
-# Psyche Explorer
-Using machine learning to analyze personality traits and characteristics
+# Spacefarer
+
+<img src="./assets/banner.png">
+
+Spacefarer uses machine learning to determine what type of astronaut you would be, based on your responses to a series of questions about your personality.
+
+<img src="./assets/home.png">
+
+You can be one of the following types of astronauts:
+
+1. **Navigator** - steers and guides the spacecraft in the vast depths of space.
+2. **Communicator** - maintains contact with stations and other spacecrafts.
+3. **Explorer** - ventures boldly into uncharted realms and territories.
+4. **Commander** - leading the spacecraft, its crew and their operation.
+5. **Scientist** - conducting research and unraveling the mysteries of the cosmos.
+
+<img src="./assets/result.png">
+
+Spacefarer is built as a Flask web app powered by a `LogisticRegression` model trained on a small (approx. 700 samples) dataset from <a href="https://www.kaggle.com/datasets/pavlorymarchuk/test3434?select=test.csv">Kaggle</a>. The model has an accuracy of 81.53%.
+
+## Setup
+
+### Prerequisites
+
+You must have Python installed on your system (preferably added to the `PATH`). It is recommended to have a version greater than 3.9.0 installed.
+
+To run Spacefarer locally on your machine, follow these steps:
+
+### 1. Clone Project
+
+Clone Spacefarer to a desired location / folder on your machine:
+
+```shell
+git clone https://github.com/ravi-aratchige/spacefarer.git
+```
+
+### 2. Activate Virtual Environment
+
+A virtual environment will help you keep Spacefarer's dependencies isolated from the global system of Python packages. To setup your virtual environment, first ensure that `virtualenv` is installed on your system:
+
+```shell
+pip install virtualenv
+```
+
+To create and activate a virtual environment, open up a terminal from the cloned `spacefarer` folder and enter the following commands:
+
+```shell
+# Create a virtual environment named 'env':
+python -m venv env
+
+# Activate the virtual environment (Windows):
+env\Scripts\activate.bat
+
+# Activate the virtual environment (MacOS / Linux):
+source env/bin/activate
+```
+
+Your terminal will now include an `(env)` prefix, indicating a successful activation of the virtual environment:
+
+```shell
+# On Windows:
+(env) drive:\folder\...spacefarer>
+
+# On MacOS and Linux
+(env) user@computer:~/...spacefarer$
+```
+
+To deactivate the virtual environment (and remove the `(env)` prefix):
+
+```shell
+deactivate
+```
+
+### 3. Install Dependencies
+
+After activating the virtual environment, you can install all of the necessary dependencies with one command:
+
+```shell
+pip install -r requirements.txt
+```
+
+<a href="https://github.com/ravi-aratchige/spacefarer/blob/main/requirements.txt">`requirements.txt`</a> includes all of the project's dependencies and their respective versions.
+
+### 4. Start Flask App
+
+Next, start up the Flask server:
+
+```shell
+python app.py
+
+# or
+
+python3 app.py
+```
+
+Flask will then serve Spacefarer on <a>http://localhost:5000</a> (development server).
