@@ -34,16 +34,26 @@ Spacefarer is built as a <a href="https://flask.palletsprojects.com">Flask</a> w
 
 ### Prerequisites
 
-Apart from the <a href="https://git-scm.com/">Git</a> version control system, you must have <a href="https://www.python.org/">Python</a> installed on your system (preferably added to the `PATH`). It is recommended to have a version greater than 3.9.0 installed.
+Spacefarer has very few prerequisites, which are probably already installed on your system:
+
+1. <a href="https://git-scm.com/">Git</a> version control system
+2. <a href="https://www.python.org/">Python</a> (recommended to have a version greater than 3.9.0)
+3. <a href="https://nodejs.org/en">Node.js</a> (recommended to have a version greater than 18.0.0)
 
 To run Spacefarer locally on your machine, follow these steps:
 
 ### 1. Clone Project
 
-Clone Spacefarer to a desired location (folder) on your machine:
+Clone Spacefarer to a desired location (folder) on your machine by opening up a terminal from the folder and entering the following command:
 
 ```shell
 git clone https://github.com/ravi-aratchige/spacefarer.git
+```
+
+Next, move into the `Spacefarer` project directory:
+
+```shell
+cd app
 ```
 
 ### 2. Activate Virtual Environment
@@ -54,7 +64,7 @@ A virtual environment will help you keep Spacefarer's dependencies isolated from
 pip install virtualenv
 ```
 
-To create and activate a virtual environment, open up a terminal from the cloned `spacefarer` folder and enter the following commands:
+To create and activate a virtual environment, enter the following commands (in the terminal opened up from the ):
 
 ```shell
 # Create a virtual environment named 'env':
