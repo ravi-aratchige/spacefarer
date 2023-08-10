@@ -2,6 +2,8 @@
 
 <img src="./assets/banner.png">
 
+Ever wondered what role you would play if you were a cosmic voyager, adventuring through space with your resourceful crew member?
+
 Spacefarer uses machine learning to determine what type of astronaut you would be, based on your responses to a series of questions about your personality.
 
 <img src="./assets/home.png">
@@ -14,9 +16,19 @@ You can be one of the following types of astronauts:
 4. **Commander** - leading the spacecraft, its crew and their operation.
 5. **Scientist** - conducting research and unraveling the mysteries of the cosmos.
 
+Spacefarer asks you a series of 20 space-themed questions; 4 questions each for the 5 personality traits of the **Big Five Personality Test**:
+
+1. Openness
+2. Neuroticism
+3. Conscientiousness
+4. Agreeableness
+5. Extraversion
+
+The answers provided to these questions are passed to a trained and deserialized model, which predicts your personality type, which is in turn mapped to a type of astronaut.
+
 <img src="./assets/result.png">
 
-Spacefarer is built as a Flask web app powered by a `LogisticRegression` model trained on a small (approx. 700 samples) dataset from <a href="https://www.kaggle.com/datasets/pavlorymarchuk/test3434?select=test.csv">Kaggle</a>. The model has an accuracy of 81.53%.
+Spacefarer is built as a Flask web app powered by a `LogisticRegression` model trained on a small (approx. 700 samples) dataset from <a href="https://www.kaggle.com/datasets/pavlorymarchuk/test3434?select=test.csv">Kaggle</a>. The model has an accuracy of **81.53%**.
 
 ## Setup
 
@@ -94,3 +106,27 @@ python3 app.py
 ```
 
 Flask will then serve Spacefarer on <a>http://localhost:5000</a> (development server).
+
+## Contribution
+
+This project is fully open-source (including data and the model). Contributions are always welcome; you may fork this project, work on it and submit a pull request.
+
+**IMPORTANT**: during development, the TailwindCSS build process must be started (for automatic purging and optimization).
+
+For this, first enter the `app` folder in the project directory (after activating the virtual environment):
+
+```shell
+cd app
+```
+
+Then, run the following command:
+
+```shell
+npm run create-css
+```
+
+This project is still underway, so you can expect changes often!
+
+---
+
+© 2023 Ravindu Aratchige. Licensed under the <a href="https://github.com/ravi-aratchige/spacefarer/blob/main/LICENSE">Apache License<a>.
