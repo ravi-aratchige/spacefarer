@@ -156,7 +156,7 @@ This project is still underway, so you can expect changes often!
 ### To-Do
 
 - [ ] Create 'About page' (`/about`)
-- [ ] Add <a href-"https://vincentgarreau.com/particles.js/">particles.js</a> to background of Flask app
+- [ ] Add <a href="https://vincentgarreau.com/particles.js/">particles.js</a> to background of Flask app
 - [ ] Optimize `form.html` using loops in Jinja blocks
 
 ---
