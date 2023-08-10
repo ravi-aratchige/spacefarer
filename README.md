@@ -153,6 +153,10 @@ npm run create-css
 
 This project is still underway, so you can expect changes often!
 
+### To-Do
+
+- [ ] Create 'About page' (`/about`)
+
 ---
 
 © 2023 Ravindu Aratchige. Licensed under the <a href="https://github.com/ravi-aratchige/spacefarer/blob/main/LICENSE">Apache License<a>.
