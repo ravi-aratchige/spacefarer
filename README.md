@@ -95,6 +95,12 @@ pip install -r requirements.txt
 
 ### 4. Start Flask App
 
+Move from the root of the project into the `app` directory (where the Flask app is stored in):
+
+```shell
+cd app
+```
+
 Next, start up the Flask server:
 
 ```shell
