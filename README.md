@@ -161,4 +161,4 @@ This project is still underway, so you can expect changes often!
 
 ---
 
-Made with :heart: Ravindu Aratchige. Licensed under the <a href="https://github.com/ravi-aratchige/spacefarer/blob/main/LICENSE">Apache License<a>.
+Made with :heart: by Ravindu Aratchige. Licensed under the <a href="https://github.com/ravi-aratchige/spacefarer/blob/main/LICENSE">Apache License<a>.
