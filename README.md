@@ -34,7 +34,7 @@ Spacefarer is built as a Flask web app powered by a `LogisticRegression` model t
 
 ### Prerequisites
 
-You must have Python installed on your system (preferably added to the `PATH`). It is recommended to have a version greater than 3.9.0 installed.
+Apart from the <a href="https://git-scm.com/">Git</a> version control system, you must have Python installed on your system (preferably added to the `PATH`). It is recommended to have a version greater than 3.9.0 installed.
 
 To run Spacefarer locally on your machine, follow these steps:
 
