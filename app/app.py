@@ -12,6 +12,19 @@ app = Flask('Spacefarer')
 # Unpickling the trained model
 model = joblib.load('../model/model.pkl')
 
+# Mapping personality types to different astronaut roles
+"""
+0. Navigator → 'Dependable'
+1. Communicator → 'Extraverted'
+2. Explorer → 'Lively'
+3. Commander → 'Responsible'
+4. Scientist → 'Serious'
+
+NOTE:
+The numbers given above correspond to the integer values returned
+by the trained model when making predictions.
+"""
+
 # Home route
 @app.route('/')
 @app.route('/home')
@@ -190,13 +203,22 @@ def display_result():
     print(f'Personality type to be displayed: {personality}')
     print(f'Data type of personality type to be displayed: {type(personality)}')
 
-    personality_types = ['Dependable', 'Extraverted', 'Lively', 'Responsible', 'Serious']
+    astronaut_types = ['Navigator', 'Communicator', 'Explorer', 'Commander', 'Scientist']
+    astronaut_info = {
+        'Navigator': "As a Navigator, you're the bedrock of every space mission. Your unwavering commitment to precision and attention to detail ensures that every trajectory is flawlessly calculated. You're dependable and steadfast, steering the spacecraft through the cosmos with impeccable accuracy.",
+        'Communicator': "As a Communicator, you light up the spacecraft with your vibrant energy and social finesse. You foster camaraderie among crew members, build connections with other stations, and transmit messages back to Earth. Your extroverted nature makes every interaction a memorable event, bridging gaps across the vastness of space.",
+        'Explorer': "As an Explorer, you possess an insatiable curiosity that fuels your ventures into the unknown. Your liveliness and zest for discovery lead you to chart uncharted territories, investigate celestial phenomena, and collect data that expands our understanding of the universe. You remind us that every star is a potential revelation.",
+        'Commander': "As a Commander, you bear the weight of leadership with grace and resilience. Your responsible nature ensures that the crew operates like a well-oiled machine, making crucial decisions and maintaining the ship's integrity. With your unwavering resolve, you guide the crew through challenges, setting the course for success.",
+        'Scientist': "As a Scientist, you dive deep into the intricacies of space, approaching every experiment with a serious and methodical approach. Your analytical mind unravels cosmic mysteries, deciphering the language of the cosmos and uncovering the secrets hidden within the stars. Your contributions illuminate the universe's grand design."
+    }
 
     # NOTE
     # The above array's items have been specifically placed in the given order so that
     # their indices match the predictions that the model makes.
 
-    return render_template('result.html', personality=personality_types[personality])
+    return render_template('result.html',
+                           astronaut=astronaut_types[personality],
+                           astronaut_info=astronaut_info)
 
 
 

@@ -2,12 +2,12 @@
 
 {% block result %}
     <section class='flex flex-col align-center text-center'>
-        <div>
+        <div class="flex flex-col justify-center items-center">
             <h1 class='text-6xl p-10'>
-                You are<br />{{ personality }}
+                You are the<br /><span class="font-orbitron text-8xl">{{ astronaut }}</span>
             </h1>
             <p class='p-5'>
-                Are you surprised, or did you expect this result yourself?
+                {{ astronaut_info[astronaut] }}
             </p>
             <a class="bg-blue-600 hover:bg-blue-400 text-white font-bold py-3 px-4 rounded" href="/">
                 Go Back
