@@ -50,10 +50,10 @@ Clone Spacefarer to a desired location (folder) on your machine by opening up a 
 git clone https://github.com/ravi-aratchige/spacefarer.git
 ```
 
-Next, move into the `Spacefarer` project directory:
+Next, move into the `spacefarer` project directory:
 
 ```shell
-cd app
+cd spacefarer
 ```
 
 ### 2. Activate Virtual Environment
@@ -64,7 +64,7 @@ A virtual environment will help you keep Spacefarer's dependencies isolated from
 pip install virtualenv
 ```
 
-To create and activate a virtual environment, enter the following commands (in the terminal opened up from the ):
+To create and activate a virtual environment, enter the following commands after moving into the `spacefarer` folder as done in the previous step:
 
 ```shell
 # Create a virtual environment named 'env':
