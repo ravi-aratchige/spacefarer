@@ -1,9 +1,0 @@
-MODEL
-
-- might need to go for a bigger dataset if overfitting occurs
-- random forest only gave approx. 28% accuracy
-
-FRONTEND
-
-- "Discover the cosmic secrets of your personality" (heading for hero section).
-	https://dribbble.com/shots/18367243-Astrology-Website-Home-Page
